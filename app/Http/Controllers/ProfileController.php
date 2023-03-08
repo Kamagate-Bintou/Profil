@@ -20,20 +20,20 @@ class ProfileController extends Controller
     }
 
   
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'username' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'avatar' => 'required|image',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         'username' => 'required',
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //         'avatar' => 'required|image',
+    //     ]);
   
-        $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
-        $request->avatar->move(public_path('avatars'), $avatarName);
+    //     $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+    //     $request->avatar->move(public_path('avatars'), $avatarName);
   
-        Auth()->user()->update(['avatar'=>$avatarName]);
+    //     Auth()->user()->update(['avatar'=>$avatarName]);
   
-        return back()->with('success', 'Avatar updated successfully.');
-    }
+    //     return back()->with('success', 'Avatar updated successfully.');
+    // }
 }
